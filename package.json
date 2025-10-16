@@ -1,0 +1,23 @@
+{
+  "name": "project-manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type":"module",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev-kvt/project-manager.git"
+  },
+  "author": "divyansh singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dev-kvt/project-manager/issues"
+  },
+  "homepage": "https://github.com/dev-kvt/project-manager#readme",
+  "dependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
