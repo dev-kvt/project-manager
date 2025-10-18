@@ -1,5 +1,48 @@
 import Mailgen from "mailgen" ;
+import nodemailer from "nodemailer" ;
+const sendEmail = async (options ) =>{
+    const mailgenerator = new  Mailgen({
+        theme : "default" ,
+        product : {
+            name : "task manager" ,
+            link : "http://localhost:3000/"
+        }   
+    })
+const emailTextual =  mailgenerator.generatePlaintext(options.mailgencontent) ;
+const emailHtml =  mailgenerator.generate(options.mailgencontent) ;
 
+
+const transporter = nodemailer.createTransport({
+    host: process.env.MAILTRAP_SMTP_HOST,
+    port: process.env.MAILTRAP_SMTP_PORT,
+    auth: {
+        user: process.env.MAILTRAP_SMTP_USER,
+        pass: process.env.MAILTRAP_SMTP_PASS
+    }
+
+
+});
+
+const mail ={
+    from : "mailtaskmanager.com" ,
+    to : options.email ,
+    subject : options.subject ,
+    text : emailTextual ,
+    html : emailHtml            
+
+}
+
+try {
+    await transporter.sendMail(mail) ;
+    console.log("email sent successfully") ;
+}
+catch (error) {
+    console.log("email not sent , check the mail trap") ;
+    console.log(error) ;    
+
+}
+}
+export default sendEmail ;
 
 const emailVerificationMailgenContent = (username , verificationUrl) => {
     return {
@@ -37,4 +80,5 @@ const forgetPasswordMailgenContent = (username , resetUrl) => {
     }
 }
 
-export { emailVerificationMailgenContent , forgetPasswordMailgenContent } ;
+export { emailVerificationMailgenContent , forgetPasswordMailgenContent };
+
