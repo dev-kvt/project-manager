@@ -2,8 +2,8 @@ import express from 'express';
 const app = express();
 import cors from "cors";
 
-
 app.use(express.json({limit: '23kb'}));
+
 
 app.get("/", (req, res) => {
     res.send("Welcome Brother!");
@@ -17,5 +17,9 @@ app.use(cors({
     allowedHeaders:["Content-Type","Authorization"]
     
 }))
+import healthcheckrouter from './routes/healthcheck.routes.js';
+app.use("/api/v1/healthcheck", healthcheckrouter);
+
+
 export default app;
 
