@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 const userSchema = new mongoose.Schema({
     avatar:{
         type:{
@@ -70,4 +71,40 @@ userSchema.pre("save", async function (next) {
 userSchema.methods.isPasswordMatched = async function (password){
   return await bcrypt.compare(password , this.password);
 };
+
+userSchema.methods.generateAccessToken= function (){
+     jwt.sign({
+        _id: this._id,
+        email: this.email,
+        username: this.username,
+
+     }, process.env.ACCESS_TOKEN_SECRET,{
+        expiresIn: 'ACCESS_TOKEN_EXPIRY'}
+
+     )
+}; 
+userSchema.methods.generateRefreshToken = function(){
+    jwt.sign({
+        _id: this._id,
+        email: this.email,
+        username: this.username,
+
+     }, process.env.REFRESH_TOKEN_SECRET,{
+        expiresIn: 'REFRESH_TOKEN_EXPIRY'}
+
+     )
+};
+userSchema.methods.generateTemporaryToken = function(){
+    const unHashedToken = crypto.randomeBytes(20).toString("hex");
+
+    const HashedToken = crypto
+    .createHash("sha256")
+    .update(unHashedToken)
+    .digest("hex");
+  
+    const TokenExpiry = Date.now() + 10 * (20 *60 * 1000); //20 minutes
+
+    return { unHashedToken , HashedToken , TokenExpiry};
+                           
+}
 export const User = mongoose.model('User', userSchema);
