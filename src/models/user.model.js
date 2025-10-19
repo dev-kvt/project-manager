@@ -1,7 +1,9 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
+import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
 const userSchema = new mongoose.Schema({
+
     avatar:{
         type:{
             url: String,
@@ -31,8 +33,8 @@ const userSchema = new mongoose.Schema({
         trim:true,
     },
     fullname:{
-        type:String,
-        required:true,
+        type: String,
+        required:false,
         trim:true,
     },
     password:{
@@ -95,7 +97,7 @@ userSchema.methods.generateRefreshToken = function(){
      )
 };
 userSchema.methods.generateTemporaryToken = function(){
-    const unHashedToken = crypto.randomeBytes(20).toString("hex");
+    const unHashedToken = crypto.randomBytes(20).toString("hex");
 
     const HashedToken = crypto
     .createHash("sha256")

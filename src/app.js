@@ -2,6 +2,7 @@ import express from 'express';
 const app = express();
 import cors from "cors";
 
+
 app.use(express.json({limit: '23kb'}));
 
 
@@ -19,6 +20,9 @@ app.use(cors({
 }))
 import healthcheckrouter from './routes/healthcheck.routes.js';
 app.use("/api/v1/healthcheck", healthcheckrouter);
+import authrouter from './routes/auth.routes.js';
+app.use("/api/v1/auth", authrouter);
+
 
 
 export default app;
