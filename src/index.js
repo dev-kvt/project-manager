@@ -22,4 +22,6 @@ connectDB()
   });
 
 console.log("This is the start of a very good project");
-// listening page , this is just a listening page for the server,port and env
+// listening page , this is just a listening page for the server,port and env variables 
+
+
