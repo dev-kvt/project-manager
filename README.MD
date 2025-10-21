@@ -1,4 +1,4 @@
-# ☁️ Kumo — Project Management Backend API
+# ️ Kumo — Project Management Backend API
 
 **Version:** 1.0.0  
 **Type:** RESTful API for Collaborative Project Management  
@@ -6,7 +6,7 @@
 
 ---
 
-## 🚀 Overview
+##  Overview
 
 **Kumo** is a backend API for team-based project management. It provides endpoints for handling users, projects, tasks, subtasks, and notes — all secured with JWT authentication and role-based access control.
 
@@ -14,7 +14,7 @@ Built to support modern, scalable collaboration systems.
 
 ---
 
-## 👥 User Roles
+## User Roles
 
 | Role | Description |
 |------|--------------|
@@ -24,7 +24,7 @@ Built to support modern, scalable collaboration systems.
 
 ---
 
-## 🔑 Core Features
+## Core Features
 
 - **Authentication:** JWT-based login, registration, email verification, password reset  
 - **Projects:** Create, view, update, and delete projects  
@@ -36,7 +36,7 @@ Built to support modern, scalable collaboration systems.
 
 ---
 
-## 🧩 API Routes
+## API Routes
 
 ### Auth — `/api/v1/auth/`
 - Register, Login, Verify Email, Refresh Tokens, Password Management
@@ -55,7 +55,7 @@ Built to support modern, scalable collaboration systems.
 
 ---
 
-## 🛡️ Security
+##  Security
 
 - JWT Authentication + Refresh Tokens  
 - Role-Based Authorization Middleware  
@@ -65,7 +65,7 @@ Built to support modern, scalable collaboration systems.
 
 ---
 
-## 📂 File Management
+##  File Management
 
 - Multiple file attachments for tasks  
 - Secure upload to `/public/images`  
@@ -73,7 +73,7 @@ Built to support modern, scalable collaboration systems.
 
 ---
 
-## ✅ Success Criteria
+##  Success Criteria
 
 - Complete Role-Based Access Control  
 - Secure User Authentication  
@@ -82,7 +82,7 @@ Built to support modern, scalable collaboration systems.
 
 ---
 
-### 🧠 Inspiration
+### � Inspiration
 
 > **Kumo (雲)** — *“The cloud that connects and moves together”*, symbolizing teamwork and collaboration.
 
